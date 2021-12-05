@@ -4,20 +4,21 @@ var app = express();
 var server = require('http').createServer(app);
 io = require('socket.io')(server);
 
-util = require("util");							// Utility resources (logging, object inspection, etc)
+util = require('util'); // Utility resources (logging, object inspection, etc)
 
 /**************************************************
-** GAME VARIABLES
-**************************************************/
-Player = require("./Player").Player;			// Player class
-players = [];									// Array of connected players
+ ** GAME VARIABLES
+ **************************************************/
+Player = require('./Player').Player; // Player class
+players = []; // Array of connected players
 players_avail = [];
-
+matching_games = [];
+matched_games = [];
 
 var port = process.env.PORT || 3001;
 
 server.listen(port, function () {
-	console.log('Server listening at port %d', port);
+  console.log('Server listening at port %d', port);
 });
 
 // Routing
